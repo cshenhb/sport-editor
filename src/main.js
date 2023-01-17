@@ -5,16 +5,15 @@ import * as log from "./log.js";
 export async function run(config) {
   if (isEmpty(config.app_token) || isEmpty(config.user_id)) {
     log.warn("未获取到APP_TOKEN或USER_ID 将使用账号密码方式运行");
-    log.info(config.username)
-    log.info(config)
-    const code = await loginByPassword("15574474750","shen4750");
+  
+     const code = await loginByPassword(config.username, config.password);
     const { app_token, user_id } = await getAccessToken(code);
 
     config.app_token = app_token;
     config.user_id = user_id;
   }
 
-  const step = getRamdomStep("8000-15000");
+  const step = getRamdomStep(config.step_size);
   await pushBandData(step, config.user_id, config.app_token);
 }
 
