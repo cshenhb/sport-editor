@@ -18,7 +18,7 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
 
       # 设置服务器时区为东八区
       - name: Set time zone
