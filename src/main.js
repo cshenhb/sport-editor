@@ -18,7 +18,7 @@ export async function run(config) {
   await pushBandData(step, config.user_id, config.app_token);
 }
 
-function getRamdomStep(step_size = DEFAULT_STEP_SIZE) {
+function getRamdomStep(step_size = 8000-15000) {
   if (!step_size.includes("-")) throw new Error("步数范围格式异常");
 
   const temp = step_size.split("-");
