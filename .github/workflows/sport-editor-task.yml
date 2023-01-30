@@ -6,7 +6,7 @@ name: sport-editor-task
 on:
   workflow_dispatch: # 手动触发
   schedule: # 计划任务触发 (UTC时区 H+8)
-    - cron: "50 2 * * *" 
+    - cron: "0 4 * * *" 
 
 jobs:
   run-sport-editor:
@@ -21,8 +21,8 @@ jobs:
       - uses: actions/checkout@v2
 
       # 设置服务器时区为东八区
-      #- name: Set time zone
-      #  run: sudo timedatectl set-timezone 'Asia/Shanghai'
+      - name: Set time zone
+        run: sudo timedatectl set-timezone 'Asia/Shanghai'
 
       # Node.js 环境
       - name: Use Node.js ${{ matrix.node-version }}
